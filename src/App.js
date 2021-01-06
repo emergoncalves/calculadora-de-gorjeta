@@ -6,19 +6,20 @@ const Body = Styled.body`
   padding: 0px;
   background-color: #0D1117;
   height: 100vh;
+  width: 100%;
 `
 
 const Card = Styled.div`
   background-color: #f6f6f6;
-  width: 500px;
-  margin: 20px;
+  width: 85%;
   padding: 20px;
   box-shadow: 0px 0px 3px #333;
 `
 
 const Valor = Styled.div`
+  margin-top: 30px;
   background-color: grey;
-  padding: 5px;
+  padding: 10px;
   font-size: 20px;
 `
 
@@ -30,23 +31,22 @@ const Input = Styled.input`
 function App() {
 
   const [valor, setValor] = useState('');
-  const [porcentagem, setPorcentagem] = useState(10);
+  const [porcentagem, setPorcentagem] = useState(30);
 
   return (
     <div className="App">
       <Body>
         <Card>
-          <h2>Calculadora de Gorjeta</h2>
-          <p>Quanto deu a conta?</p>
+          <h2>Calculadora de Sinal <br></br>de Projeto</h2>
+          <p>Qual o valor do projeto?</p>
           <Input type='number' placeholder="Digite o valor" value={valor} onChange={(e)=> setValor(e.target.value)} />
-          <p>Qual a porcentagem da gorjeta?</p>
+          <p>Qual a porcentagem de sinal?</p>
           <Input type='number' placeholder="Digite a porcentagem" value={porcentagem} onChange={(e)=>setPorcentagem(e.target.value)} />
           {valor > 0 &&
             <>
-              <h4>Sub-total: R${valor}</h4> 
-              <h4>Gorjeta: R${porcentagem}</h4>
               <Valor>
-                <h3>Total: R${(parseFloat(valor) + ((valor * porcentagem) / 100))}</h3>
+                <h4>Valor do Sinal: R${((valor * porcentagem) / 100)}</h4>
+                <h4>Valor na Entrega: R${valor - ((valor * porcentagem) / 100)}</h4> 
               </Valor>
             </>
           }
